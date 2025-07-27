@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql
+  labels:
+    component: mysql
+    project: roboshop
+    tier: database
+type: Opaque
+data:
+  MYSQL_ROOT_PASSWORD: "Um9ib1Nob3BAMQ==" # Base64 encoded password for MySQL root user RoboShop@1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: # Deployment metadata
+  name: mysql
+  namespace: roboshop # Namespace for the deployment
+  labels:
+    component: mysql
+    project: roboshop
+    tier: database
+    # This is the deployment for MySQL
+spec:
+  replicas: 1 # Number of replicas
+  selector:
+    matchLabels:
+      component: mysql
+      project: roboshop
+      tier: database
+# this is pod definition
+  template:
+    metadata:
+      labels:
+        component: mysql
+        project: roboshop
+        tier: database
+    spec:
+      containers:
+        - name: mysql
+          image: nagaraj411/mysql:v1 # MySQL image
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: roboshop # Namespace for the service
+  labels:
+    component: mysql
+    project: roboshop
+    tier: database
+spec:
+  selector:
+    component: mysql
+    project: roboshop
+    tier: database
+  ports:
+  - protocol: TCP # Protocol for the service
+    port: 3306 # MySQL default service port
+    targetPort: 3306 # container port
