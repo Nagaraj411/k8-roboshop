@@ -58,7 +58,7 @@ spec:
           envFrom:
           - configMapRef:
               name: payment # Reference to the ConfigMap
-          - SecretRef:
+          - secretRef:
               name: payment # Reference to the Secret
 ---
 
