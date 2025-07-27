@@ -26,23 +26,23 @@ spec:
       containers:
         - name: mongodb
           image: nagaraj411/mongodb:v1 # MongoDB image
------
-          
-apiVersion: v1
-kind: Service
-metadata:
-  name: mongodb
-  namespace: roboshop # Namespace for the service
-  labels:
-    component: mongodb
-    project: roboshop
-    tier: database
-spec:
-  selector:
-    component: mongodb
-    project: roboshop
-    tier: database
-  ports:
-  - protocol: TCP # Protocol for the service
-    port: 27017 # MongoDB default port
-    targetPort: 27017 # Port on the container to forward traffic to
+
+
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: mongodb
+    namespace: roboshop # Namespace for the service
+    labels:
+      component: mongodb
+      project: roboshop
+      tier: database
+  spec:
+    selector:
+      component: mongodb
+      project: roboshop
+      tier: database
+    ports:
+    - protocol: TCP # Protocol for the service
+      port: 27017 # MongoDB default service port
+      targetPort: 27017 # container port
