@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: redis
-          image: redis:v1 # Redis image
+          image: redis:7.0 # Redis image
 
 ---
 
