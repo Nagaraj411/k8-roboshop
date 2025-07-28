@@ -52,12 +52,12 @@ metadata:
   labels:
     component: catalogue
     project: roboshop
-    tier: database
+    tier: app
 spec:
   selector:
     component: catalogue
     project: roboshop
-    tier: database
+    tier: app
   ports:
   - protocol: TCP # Protocol for the service
     port: 8080 # catalogue default service port
