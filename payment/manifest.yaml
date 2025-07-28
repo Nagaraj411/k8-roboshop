@@ -77,6 +77,6 @@ spec:
     project: roboshop
     tier: app
   ports:
-  - protocol: TCP # Protocol for the service
-    port: 8080 # payment default service port
-    targetPort: 8080 # container port
+    - protocol: TCP # Protocol for the service
+      port: 8080 # payment default service port
+      targetPort: 8080 # container port
