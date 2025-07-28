@@ -40,6 +40,9 @@ spec:
       containers:
         - name: rabbitmq
           image: rabbitmq:3 # RabbitMQ image
+          envFrom:
+          - configMapRef:
+              name: rabbitmq # Reference to the ConfigMap
 
 ---
 
