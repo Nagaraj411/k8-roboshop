@@ -37,11 +37,11 @@ spec:
         tier: app
     spec:
       containers:
-        - name: catalogue
-          image: nagaraj411/catalogue:v1 # Catalogue image
-          envFrom:
-          - configMapRef:
-              name: catalogue # Reference to the ConfigMap
+      - name: catalogue
+        image: nagaraj411/catalogue:v1 # Catalogue image
+        envFrom:
+        - configMapRef:
+            name: catalogue # Reference to the ConfigMap
 ---
 
 apiVersion: v1
