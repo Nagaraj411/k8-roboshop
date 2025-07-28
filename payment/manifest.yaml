@@ -17,9 +17,9 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: mysql
+  name: payment
   labels:
-    component: mysql
+    component: payment
     project: roboshop
     tier: app
 type: Opaque
