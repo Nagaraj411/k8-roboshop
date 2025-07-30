@@ -24,27 +24,28 @@ metadata:
     tier: app
 type: Opaque
 data:
-  AMQP_USER: "cm9ib3Nob3A=" # Base64 encoded RabbitMQ user 
-  AMQP_PASS: "cm9ib3Nob3AxMjM=" # Base64 encoded RabbitMQ user and password
+  AMQP_USER: "cm9ib3Nob3A="
+  AMQP_PASS: "cm9ib3Nob3AxMjM="
 ---
 apiVersion: apps/v1
 kind: Deployment
-metadata: # Deployment metadata
+metadata:
   name: payment
-  namespace: roboshop # Namespace for the deployment
+  namespace: roboshop
+  # deployment labels
   labels:
     component: payment
     project: roboshop
     tier: app
-    # This is the deployment for payment
 spec:
-  replicas: 1 # Number of replicas
+  replicas: 1
+  # These are the labels replica set use to create pod replicas, this should match pod labels
   selector:
     matchLabels:
       component: payment
       project: roboshop
       tier: app
-# this is pod definition
+  # This is pod definition
   template:
     metadata:
       labels:
@@ -53,20 +54,19 @@ spec:
         tier: app
     spec:
       containers:
-        - name: payment
-          image: nagaraj411/payment:v1 # Payment image
-          envFrom:
-          - configMapRef:
-              name: payment # Reference to the ConfigMap
-          - secretRef:
-              name: payment # Reference to the Secret
+      - name: payment
+        image: nagaraj411/payment:v1
+        envFrom:
+        - configMapRef:
+            name: payment
+        - secretRef:
+            name: payment
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
   name: payment
-  namespace: roboshop # Namespace for the service
+  namespace: roboshop
   labels:
     component: payment
     project: roboshop
@@ -77,6 +77,6 @@ spec:
     project: roboshop
     tier: app
   ports:
-    - protocol: TCP # Protocol for the service
-      port: 8080 # payment default service port
-      targetPort: 8080 # container port
+  - protocol: TCP
+    port: 8080 # service port
+    targetPort: 8080 # container port
