@@ -55,8 +55,8 @@ spec:
       containers:
         - name: payment
           image: nagaraj411/payment:v1 # Payment image
-          ports:
-            - containerPort: 8080
+          # ports:
+          #   - containerPort: 8080
           envFrom:
           - configMapRef:
               name: payment # Reference to the ConfigMap
