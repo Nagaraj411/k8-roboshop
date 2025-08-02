@@ -58,9 +58,6 @@ kubectl apply -f <file>.yaml              # Deploy a resource
 
 🛠️ Tools Used
     Kubernetes 🧬
-
     Docker 🐳
-
     YAML ⚙️
-
     VS Code 🖥️
