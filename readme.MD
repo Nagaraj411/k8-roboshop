@@ -55,9 +55,8 @@ kubectl get all -n <namespace>            # List all resources
 kubectl logs <pod-name> -n <namespace>    # View logs
 kubectl describe svc <svc-name> -n <ns>   # Inspect service
 kubectl apply -f <file>.yaml              # Deploy a resource
-
-🛠️ Tools Used
-    Kubernetes 🧬
-    Docker 🐳
-    YAML ⚙️
-    VS Code 🖥️
+    🛠️ Tools Used
+        Kubernetes 🧬
+        Docker 🐳
+        YAML ⚙️
+        VS Code 🖥️
